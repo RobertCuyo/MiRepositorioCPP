@@ -1,11 +1,17 @@
+nombre: ROBERT CHARLIE 
+apellido:CUYO ZAMATA
+fecha: 11/04/2024
+
 <========================factorial========================>
 #include <iostream>
 using namespace std;
-int factorial(int num) {
-	return (num == 0) ? 1 : num * factorial(num - 1);
+int factorial(int num) {/*una funcion que retorna el resultado atraves de un operador condicional
+	la recursividad sigue mientras q num sea mayor a 0*/
+	return (num == 0) ? 1 : num * factorial(num - 1);//operador condicional
 }
 int main() {
-	cout << factorial(5) << endl;
+	int numero=0; cin >> numero;
+	cout << factorial(numero) << endl;// se llama a la funcion recursiva
 	return 0;
 }
 <========================fibonacci========================>
@@ -20,7 +26,7 @@ int main() {
 	}
 	return 0;
 }
-<======================== ========================>
+<========================Sumatoria de 1+2+3+4+5+...n ========================>
 #include <iostream>
 using namespace std;
 int main() {
@@ -36,12 +42,36 @@ int main() {
 	return 0;
 }
 
-
-
-
-
-
-
+<========================Sumatoria de UNOS ========================>
+#include <iostream>
+using namespace std;
+int main() {
+	int num=5;
+	for (int i = 1; i <= num; i++) {
+		if (i < num) {
+			cout << "1 + ";
+		}
+		else {
+			cout <<"1 = "<<i;
+		}
+	}
+	return 0;
+}
+<========================Sumatoria de cuadrados ========================>
+#include <iostream>
+using namespace std;
+int main() {
+	int aux = 0,num;
+	cout << "Ingrese un numero: "; cin >> num;
+	for (int i = 1; i <= num; i++) {
+		aux += (i * i);
+		if (i < num) {
+			cout << i << "^2 + ";
+		}
+		else { cout << i << "^2" << " = " << aux; }	
+	}
+	return 0;
+}
 
 
 
