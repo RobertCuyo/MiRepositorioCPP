@@ -1,0 +1,65 @@
+<========================factorial========================>
+#include <iostream>
+using namespace std;
+int factorial(int num) {
+	return (num == 0) ? 1 : num * factorial(num - 1);
+}
+int main() {
+	cout << factorial(5) << endl;
+	return 0;
+}
+<========================fibonacci========================>
+#include <iostream>
+using namespace std;
+int fibonacci(int num) {
+	return (num < 2) ? num : fibonacci(num - 1) + fibonacci(num - 2);
+}
+int main() {
+	for (int i = 0; i <= 8; i++) {
+		cout << fibonacci(i)<<endl;
+	}
+	return 0;
+}
+<======================== ========================>
+#include <iostream>
+using namespace std;
+int main() {
+	int aux=0;
+	for (int i = 1; i <= 5; i++) {
+		if (i<5) {
+			cout << i<<" + " ;
+		}
+		else {cout << i;}
+		aux += i;
+	}
+	cout << " = " << aux;
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
