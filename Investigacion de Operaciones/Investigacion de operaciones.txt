@@ -1,96 +1,110 @@
-nombre: ROBERT CHARLIE 
+/*nombre: ROBERT CHARLIE 
 apellido:CUYO ZAMATA
 fecha: 11/04/2024
 
-<========================factorial========================>
+github: https://github.com/RobertCuyo/MiRepositorioCPP/tree/master/Investigacion%20de%20Operaciones
+*/
+
 #include <iostream>
+#include <cstdlib>
 using namespace std;
+void Menu();
+void SumatoriaN();
+void SumaUnos();
+void SumaCuadrados();
+int fibonacci(int);
+int factorial(int);
+int main() {
+
+	int opcion = 0;
+	char opChar;
+	do {
+		Menu();
+		cin >> opcion;
+		switch (opcion)
+		{
+		case 1: {
+			int numero = 0;
+			cout << "Ingrese un numero: "; cin >> numero;
+			for (int i = 0; i <= numero; i++) {
+				cout << fibonacci(i) << endl;
+			}
+		}
+			  break;
+		case 2: {
+			int numero = 0;
+			cout << "Ingrese un numero: "; cin >> numero;
+			cout << factorial(numero) << endl;// se llama a la funcion recursiva
+		}
+			  break;
+		case 3:
+			SumaUnos();
+			break;
+		case 4:
+			SumatoriaN();
+			break;
+		case 5:
+			SumaCuadrados();
+			break;
+		default:
+			exit(1);
+			break;
+		}
+		cout << "\nContinuar? (S/N): "; cin >> opChar;
+		system("cls");
+	} while (opChar == 'S' || opChar == 's');
+	return 0;
+}
 int factorial(int num) {/*una funcion que retorna el resultado atraves de un operador condicional
 	la recursividad sigue mientras q num sea mayor a 0*/
 	return (num == 0) ? 1 : num * factorial(num - 1);//operador condicional
 }
-int main() {
-	int numero=0; cin >> numero;
-	cout << factorial(numero) << endl;// se llama a la funcion recursiva
-	return 0;
-}
-<========================fibonacci========================>
-#include <iostream>
-using namespace std;
 int fibonacci(int num) {
 	return (num < 2) ? num : fibonacci(num - 1) + fibonacci(num - 2);
-	/*se retorna el valor del operador condicional */
 }
-int main() {
-	for (int i = 0; i <= 7; i++) {
-		cout <<"  "<< fibonacci(i) ;
-	}
-	return 0;
-}
-<========================Sumatoria de 1+2+3+4+5+...n ========================>
-#include <iostream>
-using namespace std;
-int main() {
-	int aux=0;
-	for (int i = 1; i <= 5; i++) {
-		if (i<5) {
-			cout << i<<" + " ;
+void SumaCuadrados() {
+	int aux = 0, num = 0;
+	cout << "Ingrese un numero: "; cin >> num;
+	for (int i = 1; i <= num; i++) {
+		aux += (i * i);
+		if (i < num) {
+			cout << i << "^2 + ";
 		}
-		else {cout << i;}
-		aux += i;// aux se en encarga de guardar la suma de los i
+		else { cout << i << "^2" << " = " << aux; }
 	}
-	cout << " = " << aux; // se muestra la suma final 
-	return 0;
 }
-
-<========================Sumatoria de UNOS ========================>
-#include <iostream>
-using namespace std;
-int main() {
-	int num=5;
+void SumaUnos() {
+	int num = 0;
+	cout << "Introduzca un numero: ";
+	cin >> num;
 	for (int i = 1; i <= num; i++) {
 		if (i < num) {
 			cout << "1 + ";
 		}
 		else {
-			cout <<"1 = "<<i;
+			cout << "1 = " << i;
 		}
 	}
-	return 0;
 }
-<========================Sumatoria de cuadrados ========================>
-#include <iostream>
-using namespace std;
-int main() {
-	int aux = 0,num=0;//inicializa el valor de las variables con sus valores por defecto
-	cout << "Ingrese un numero: "; cin >> num;
-	for (int i = 1; i <= num; i++) {
-		aux += (i * i); // aux suma los cuadros de los i 
-		if (i < num) {
-			cout << i << "^2 + ";// imprime i^2 + para tener un acabado 
+void SumatoriaN() {
+	int aux = 0, numero = 0;
+	cout << "Ingrese un numero: "; cin >> numero; cout << endl;
+	for (int i = 1; i <= numero; i++) {
+		if (i < numero) {
+			cout << i << " + ";
 		}
-		else { cout << i << "^2" << " = " << aux; }	muestra el resultado de las sumas del cuadrado de i
+		else { cout << i; }
+		aux += i;
 	}
-	return 0;
+	cout << " = " << aux;
 }
+void Menu() {
+	cout << "\tElija una opcion" << endl;
+	cout << "1. Fibonacii" << endl;
+	cout << "2. Factorial" << endl;
+	cout << "3. Sumatoria de 1" << endl;
+	cout << "4. Sumatoria de i" << endl;
+	cout << "5. Sumatoria de i^2" << endl;
+	cout << "0. Salir" << endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
