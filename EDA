@@ -1,1 +1,364 @@
+<===================================================================>
+#include <iostream>
+using namespace std;
+class Nodo {
+public:
+    int dato;
+    Nodo* sig;
+    Nodo(int valor) {
+        dato = valor;
+        sig = nullptr;
+    }
+};
+class ListaEnlazada {
+private:
+    Nodo* inicio;
+public:
+    ListaEnlazada() {
+        inicio = nullptr;
+    }
+    void insertarInicio(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        nuevo->sig = inicio;
+        inicio = nuevo;
+    }
+    void insertarFinal(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr) {
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux=inicio;
+            while (aux->sig != nullptr) {
+                aux = aux->sig;
+            }
+            aux->sig = nuevo;
+        }
+    }
+    void imprimir() {
+        Nodo* temp = inicio;
+        if (temp == nullptr) {
+            cout << "Lista vacia!"<<endl;
+        }
+        else {
+            cout << "Elementos de la lista"<<endl;
+        }
+        while (temp != nullptr) {
+            cout << temp->dato << " ";
+            temp = temp->sig;
+        }
+        cout << endl;
+    }
+};
+bool esPrimo(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
 
+int main() {
+    srand(time(NULL));
+    ListaEnlazada lista;
+    int num,i=0,aux=0;
+    cin >> num;
+    while (i <num  ) {
+        aux = rand() % (200 - 1 + 1) + 1;
+        if (esPrimo(aux)) {
+            lista.insertarFinal(aux);
+            i++;
+        }
+    }
+    lista.imprimir();
+    return 0;
+}
+<===================================================================>
+#include <iostream>
+using namespace std;
+class Nodo {
+public:
+    int dato;
+    Nodo* sig;
+    Nodo(int valor) {
+        dato = valor;
+        sig = nullptr;
+    }
+};
+class ListaEnlazada {
+private:
+    Nodo* inicio;
+public:
+    ListaEnlazada() {
+        inicio = nullptr;
+    }
+    void insertarOrdenado(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr || nuevo->dato < inicio->dato) {
+            nuevo->sig = inicio;
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux = inicio;
+            while (aux->sig != nullptr && aux->sig->dato < nuevo->dato) {
+                aux = aux->sig;
+            }
+            nuevo->sig = aux->sig;
+            aux->sig = nuevo;
+        }
+    }
+    void insertarInicio(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        nuevo->sig = inicio;
+        inicio = nuevo;
+    }
+    void insertarFinal(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr) {
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux=inicio;
+            while (aux->sig != nullptr) {
+                aux = aux->sig;
+            }
+            aux->sig = nuevo;
+        }
+    }
+    void imprimir() {
+        Nodo* temp = inicio;
+        if (temp == nullptr) {
+            cout << "Lista vacia!"<<endl;
+        }
+        else {
+            cout << "Elementos de la lista"<<endl;
+        }
+        while (temp != nullptr) {
+            cout << temp->dato << " ";
+            temp = temp->sig;
+        }
+        cout << endl;
+    }
+};
+int main() {
+    ListaEnlazada lista;
+    lista.insertarOrdenado(3);
+    lista.insertarOrdenado(1);
+    lista.insertarOrdenado(9);
+    lista.insertarOrdenado(5);
+    lista.insertarOrdenado(2);
+    lista.insertarOrdenado(6);
+    lista.imprimir();
+    return 0;
+}
+<===================================================================>
+#include <iostream>
+using namespace std;
+class Nodo {
+public:
+    int dato;
+    Nodo* sig;
+    Nodo(int valor) {
+        dato = valor;
+        sig = nullptr;
+    }
+};
+class ListaEnlazada {
+private:
+    Nodo* inicio;
+public:
+    ListaEnlazada() {
+        inicio = nullptr;
+    }
+    void insertarOrdenado(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr || nuevo->dato < inicio->dato) {
+            nuevo->sig = inicio;
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux = inicio;
+            while (aux->sig != nullptr && aux->sig->dato < nuevo->dato) {
+                aux = aux->sig;
+            }
+            nuevo->sig = aux->sig;
+            aux->sig = nuevo;
+        }
+    }
+    void insertarDescendente(int valor){
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr || nuevo->dato > inicio->dato) {
+            nuevo->sig = inicio;
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux = inicio;
+            while (aux->sig != nullptr && aux->sig->dato > nuevo->dato) {
+                aux = aux->sig;
+            }
+            nuevo->sig = aux->sig;
+            aux->sig = nuevo;
+        }
+    }
+    void insertarInicio(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        nuevo->sig = inicio;
+        inicio = nuevo;
+    }
+    void insertarFinal(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr) {
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux=inicio;
+            while (aux->sig != nullptr) {
+                aux = aux->sig;
+            }
+            aux->sig = nuevo;
+        }
+    }
+    void imprimir() {
+        Nodo* temp = inicio;
+        if (temp == nullptr) {
+            cout << "Lista vacia!"<<endl;
+        }
+        else {
+            cout << "Elementos de la lista"<<endl;
+        }
+        while (temp != nullptr) {
+            cout << temp->dato << " ";
+            temp = temp->sig;
+        }
+        cout << endl;
+    }
+};
+int main() {
+    ListaEnlazada lista;
+    lista.insertarDescendente(3);
+    lista.insertarDescendente(1);
+    lista.insertarDescendente(9);
+    lista.insertarDescendente(6);
+    lista.insertarDescendente(2);
+    lista.imprimir();
+    return 0;
+}
+
+<===================================================================>
+#include <iostream>
+using namespace std;
+class Nodo {
+public:
+    int dato;
+    Nodo* sig;
+    Nodo(int valor) {
+        dato = valor;
+        sig = nullptr;
+    }
+};
+class ListaEnlazada {
+private:
+    Nodo* inicio;
+public:
+    ListaEnlazada() {
+        inicio = nullptr;
+    }
+    void insertarOrdenado(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr || nuevo->dato < inicio->dato) {
+            nuevo->sig = inicio;
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux = inicio;
+            while (aux->sig != nullptr && aux->sig->dato < nuevo->dato) {
+                aux = aux->sig;
+            }
+            nuevo->sig = aux->sig;
+            aux->sig = nuevo;
+        }
+    }
+    void insertarDescendente(int valor){
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr || nuevo->dato > inicio->dato) {
+            nuevo->sig = inicio;
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux = inicio;
+            while (aux->sig != nullptr && aux->sig->dato > nuevo->dato) {
+                aux = aux->sig;
+            }
+            nuevo->sig = aux->sig;
+            aux->sig = nuevo;
+        }
+    }
+    void insertarInicio(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        nuevo->sig = inicio;
+        inicio = nuevo;
+    }
+    void insertarFinal(int valor) {
+        Nodo* nuevo = new Nodo(valor);
+        if (inicio == nullptr) {
+            inicio = nuevo;
+        }
+        else {
+            Nodo* aux=inicio;
+            while (aux->sig != nullptr) {
+                aux = aux->sig;
+            }
+            aux->sig = nuevo;
+        }
+    }
+    void imprimirPosicion(int posicion) {
+        Nodo* temp = inicio;
+        int contador = 1;
+        while (temp != nullptr && contador < posicion) {
+            temp = temp->sig;
+            contador++;
+        }
+        if (temp == nullptr) {
+            cout << "Posicio fuera de rango" << endl;
+        }
+        else {
+            cout << "Dato en la posicion " << posicion << ": " << temp->dato << endl;
+        }
+    }
+    void imprimir() {
+        Nodo* temp = inicio;
+        if (temp == nullptr) {
+            cout << "Lista vacia!"<<endl;
+        }
+        else {
+            cout << "Elementos de la lista"<<endl;
+        }
+        while (temp != nullptr) {
+            cout << temp->dato << " ";
+            temp = temp->sig;
+        }
+        cout << endl;
+    }
+};
+int main() {
+    ListaEnlazada lista;
+    int num=0;
+    lista.insertarDescendente(3);
+    lista.insertarDescendente(1);
+    lista.insertarDescendente(9);
+    lista.insertarDescendente(6);
+    lista.insertarDescendente(2);
+    lista.insertarDescendente(10);
+    lista.insertarDescendente(17);
+    cin >> num;
+    lista.imprimir();
+    cout << endl;
+    lista.imprimirPosicion(num);
+
+    
+    return 0;
+}
